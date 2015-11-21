@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".JokeActivity"
+    >
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="revealPunchline"
+        >
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardview_setup"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="50dp"
+            card_view:cardBackgroundColor="#71C3DE"
+            card_view:cardCornerRadius="8dp"
+            >
+
+            <TextView
+                android:id="@+id/textview_joke_setup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                tools:text="Your momma so fat..."
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardview_punchline"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="50dp"
+            card_view:cardBackgroundColor="#5167DE"
+            card_view:cardCornerRadius="8dp"
+            >
+
+            <TextView
+                android:id="@+id/textview_joke_punchline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                tools:text="She ate a cake?"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                />
+        </android.support.v7.widget.CardView>
+    </ViewFlipper>
+</FrameLayout>
