@@ -8,6 +8,11 @@ public class Joke {
     private String setup;
     private String punchLine;
 
+    public Joke(String setup, String punchLine){
+        this.setup = setup;
+        this.punchLine = punchLine;
+    }
+
     public String getPunchLine () {
         return punchLine;
     }

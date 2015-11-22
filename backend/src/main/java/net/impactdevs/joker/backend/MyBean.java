@@ -1,15 +1,29 @@
 package net.impactdevs.joker.backend;
 
-/** The object model for the data we are sending through endpoints */
+import com.example.Joke;
+
+/**
+ * The object model for the data we are sending through endpoints
+ */
 public class MyBean {
 
     private String myData;
+    private Joke   mJoke;
 
-    public String getData() {
+
+    public String getData () {
         return myData;
     }
 
-    public void setData(String data) {
+    public void setData (String data) {
         myData = data;
+    }
+
+    public Joke getJoke () {
+        return mJoke;
+    }
+
+    public void setJoke (Joke joke) {
+        mJoke = joke;
     }
 }

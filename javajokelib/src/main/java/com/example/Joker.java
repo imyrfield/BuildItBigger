@@ -4,25 +4,16 @@ import java.util.ArrayList;
 
 public class Joker {
 
-    private ArrayList<Joke> jokeList;
+    private static ArrayList<Joke> jokeList = new ArrayList<Joke>() {};
 
-    public void initializeJokeList () {
-        jokeList = new ArrayList<Joke>() {};
-        jokeList.add( setJoke( "Knock, Knock", "Nobody's home!" ) );
-        //jokeList.add( setJoke( "", "" ) );
+    static {
+        jokeList.add( new Joke( "Knock, Knock", "Nobody's home!" ) );
+        jokeList.add( new Joke( "Your momma so fat..", "She likes cake..." ) );
+        jokeList.add( new Joke( "What do you call a freezing reindeer", "Snow deer" ) );
     }
 
     public Joke getJoke (int index) {
 
         return index < jokeList.size() ? jokeList.get( index ) : null;
-    }
-
-    private Joke setJoke (String setup, String punchLine) {
-
-        Joke joke = new Joke();
-        joke.setSetup( setup );
-        joke.setPunchLine( punchLine );
-
-        return joke;
     }
 }
