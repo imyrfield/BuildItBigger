@@ -1,8 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
 import android.widget.Toast;
@@ -15,17 +15,19 @@ import net.impactdevs.joker.backend.myApi.model.Joke;
 
 import java.io.IOException;
 
-import impactdevs.net.jokeactivity.JokeActivity;
-
 /**
  * Created by Ian on 11/20/2015.
  */
 public class EndpointsAsyncTask
         extends AsyncTask<Pair<Context, Integer>, Void, Joke> {
-    
+
+    public interface AsyncListener {
+        void saveData (Bundle bundle);
+    }
+
     private static MyApi myApiService = null;
     private Context context;
-    
+
     @Override
     protected Joke doInBackground (Pair<Context, Integer>... params) {
         Log.d( "EndpointsAsyncTask", "doInBackground (line 30): " );
@@ -54,7 +56,8 @@ public class EndpointsAsyncTask
         
         context = params[0].first;
         int index = params[0].second;
-        Log.d("EndpointsAsyncTask", "doInBackground (line 57): " + index);
+
+        Log.d( "EndpointsAsyncTask", "doInBackground (line 57): " + index );
         
         try {
             return myApiService.getJoke( index ).execute().getJoke();
@@ -67,18 +70,21 @@ public class EndpointsAsyncTask
     @Override
     protected void onPostExecute (Joke result) {
         
-        Log.d( "EndpointsAsyncTask", "onPostExecute (line 66): ");
+        Log.d( "EndpointsAsyncTask", "onPostExecute (line 66): " );
 
         if (result == null) {
+
             Log.d( "EndpointsAsyncTask", "onPostExecute (line 71): result is null" );
             Toast.makeText( context, "No result", Toast.LENGTH_LONG ).show();
-            return;
+
+        } else {
+
+            Bundle bundle = new Bundle();
+            bundle.putString( "setup", result.getSetup() );
+            bundle.putString( "punchline", result.getPunchLine() );
+
+            ( (AsyncListener) context ).saveData( bundle );
         }
-        
-        // Pass Intent to Android Library
-        Intent intent = new Intent( context, JokeActivity.class );
-        intent.putExtra( "setup", result.getSetup() );
-        intent.putExtra( "punchline", result.getPunchLine() );
-        context.startActivity( intent );
     }
+
 }

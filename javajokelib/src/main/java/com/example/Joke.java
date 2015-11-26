@@ -7,10 +7,12 @@ public class Joke {
 
     private String setup;
     private String punchLine;
+    private String title;
 
-    public Joke(String setup, String punchLine){
+    public Joke(String title, String setup, String punchLine){
         this.setup = setup;
         this.punchLine = punchLine;
+        this.title = title;
     }
 
     public String getPunchLine () {
@@ -27,5 +29,13 @@ public class Joke {
 
     public void setSetup (String setup) {
         this.setup = setup;
+    }
+
+    public String getTitle () {
+        return title;
+    }
+
+    public void setTitle (String title) {
+        this.title = title;
     }
 }
