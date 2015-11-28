@@ -30,7 +30,7 @@ public class EndpointsAsyncTask
 
     @Override
     protected Joke doInBackground (Pair<Context, Integer>... params) {
-        Log.d( "EndpointsAsyncTask", "doInBackground (line 30): " );
+
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder( AndroidHttp.newCompatibleTransport(),
                                                        new AndroidJsonFactory(),

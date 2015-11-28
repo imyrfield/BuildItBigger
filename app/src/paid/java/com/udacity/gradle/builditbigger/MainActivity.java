@@ -77,7 +77,7 @@ public class MainActivity
 
     public void showJokeList (View view) {
 
-        Toast.makeText( this, "This is the paid version!!!", Toast.LENGTH_LONG ).show();
+        Toast.makeText( this, "Feature Coming Soon!", Toast.LENGTH_LONG ).show();
     }
 
     @Override

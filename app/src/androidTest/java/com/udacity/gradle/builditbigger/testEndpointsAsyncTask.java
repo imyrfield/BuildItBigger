@@ -37,6 +37,7 @@ public class testEndpointsAsyncTask
         super.tearDown();
     }
 
+    @SuppressWarnings( "unchecked" )
     public final void testSomeAsyncTask () throws Throwable {
 
         runTestOnUiThread( new Runnable() {
